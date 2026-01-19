@@ -2,36 +2,62 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ZILA AI Tokenomics</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+<title>ZILA | Institutional Whitepaper</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<section class="spacer"></section>
+<canvas id="bg"></canvas>
 
-<section id="tokenomics">
-  <canvas id="bg"></canvas>
+<section class="hero">
+  <h1>ZILA Token</h1>
+  <p>Institutional-grade AI-powered Web3 infrastructure with sustainable tokenomics.</p>
+</section>
 
-  <div class="content">
-    <h1>ZILA Tokenomics</h1>
-    <p>AI-Powered Web3 Economy</p>
-    <div id="chart"></div>
-  </div>
-
-  <div id="tooltip"></div>
-
-  <div id="detail">
-    <h2 id="detail-title"></h2>
-    <p id="detail-text"></p>
+<section id="technical">
+  <h2>Technical Whitepaper</h2>
+  <div class="card">
+    <p>
+      ZILA is a modular Web3 infrastructure integrating AI-driven analytics,
+      on-chain governance logic, and adaptive liquidity control.
+      Designed for EVM-compatible chains with long-term scalability.
+    </p>
   </div>
 </section>
 
-<section class="spacer"></section>
+<section id="tokenomics">
+  <h2>Economic Paper – Tokenomics</h2>
+
+  <div class="grid">
+    <div class="card"><b>Total Supply</b><br>1,000,000,000 ZILA</div>
+    <div class="card"><b>Initial Circulating Supply</b><br>~180,000,000 ZILA</div>
+  </div>
+
+  <div id="chart" class="chart"></div>
+
+  <div class="grid">
+    <div class="card">40% — Staking (APR 5%)</div>
+    <div class="card">25% — Ecosystem & Community (incl. 5% Airdrop)</div>
+    <div class="card">15% — Presale & Private Sale</div>
+    <div class="card">10% — Team & Burn</div>
+    <div class="card">10% — Liquidity (Locked)</div>
+  </div>
+</section>
+
+<section id="vesting">
+  <h2>Vesting Schedule</h2>
+  <div class="timeline">
+    <div class="time">Presale — 1 Year Linear Vesting</div>
+    <div class="time">Private Sale — 2 Years Linear Vesting</div>
+    <div class="time">Team — 3 Years Vesting (5% Locked, 5% Burn Reserve)</div>
+  </div>
+</section>
+
+<footer>ZILA © 2026 — Institutional Whitepaper</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="script.js"></script>
 <script src="three-bg.js"></script>
-<script src="tokenomics.js"></script>
-
 </body>
 </html>
