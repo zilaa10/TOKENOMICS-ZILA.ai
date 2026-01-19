@@ -1,49 +1,43 @@
-const bg = document.getElementById("bg");
-const sceneBG = new THREE.Scene();
-
-const cameraBG = new THREE.PerspectiveCamera(
-  60,
-  window.innerWidth / window.innerHeight,
-  1,
+const canvas=document.getElementById('bg');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth/window.innerHeight,
+  0.1,
   1000
 );
-cameraBG.position.z = 100;
 
-const rendererBG = new THREE.WebGLRenderer({ canvas: bg, alpha: true });
-rendererBG.setSize(window.innerWidth, window.innerHeight);
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+camera.position.z=5;
 
-const points = [];
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
+const geometry=new THREE.BufferGeometry();
+const points=[];
 
-for (let i = 0; i < 400; i++) {
-  const x = (Math.random() - 0.5) * 200;
-  const y = (Math.random() - 0.5) * 200;
-  const z = (Math.random() - 0.5) * 200;
-  vertices.push(x, y, z);
-  points.push({ x, y, z, vx: Math.random() * 0.02, vy: Math.random() * 0.02 });
+for(let i=0;i<1200;i++){
+  points.push(
+    (Math.random()-0.5)*20,
+    (Math.random()-0.5)*20,
+    (Math.random()-0.5)*20
+  );
 }
 
-geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+geometry.setAttribute(
+  'position',
+  new THREE.Float32BufferAttribute(points,3)
+);
 
-const material = new THREE.PointsMaterial({
-  color: 0x00ffff,
-  size: 1.5
+const material=new THREE.PointsMaterial({
+  color:0x66ccff,
+  size:0.04
 });
 
-const particles = new THREE.Points(geometry, material);
-sceneBG.add(particles);
+const mesh=new THREE.Points(geometry,material);
+scene.add(mesh);
 
-function animateBG() {
-  requestAnimationFrame(animateBG);
-  const pos = geometry.attributes.position.array;
-
-  for (let i = 0; i < points.length; i++) {
-    pos[i * 3] += points[i].vx;
-    pos[i * 3 + 1] += points[i].vy;
-  }
-
-  geometry.attributes.position.needsUpdate = true;
-  rendererBG.render(sceneBG, cameraBG);
+function animate(){
+  requestAnimationFrame(animate);
+  mesh.rotation.y+=0.0008;
+  renderer.render(scene,camera);
 }
-animateBG();
+animate();
